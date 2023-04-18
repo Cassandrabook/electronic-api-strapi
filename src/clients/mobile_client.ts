@@ -1,0 +1,22 @@
+import axios from "axios";
+
+const client = axios.create({ baseURL: "http://localhost:1337/api" });
+
+export class MobileClient {
+  constructor() {}
+
+  public async getMobiles(): Promise<any> {
+    const response = await client.get("/mobiles");
+    return response.data;
+  }
+
+  public async getMobile(id: number): Promise<any> {
+    const response = await client.get(`/mobiles/${id}`);
+    return response.data;
+  }
+
+  public async deleteMobile(id: number): Promise<any> {
+    const response = await client.delete(`/mobiles/${id}`);
+    return response.data;
+  }
+}
