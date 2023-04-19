@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ComputerClient } from "../clients/computer_client";
+import { Computer } from "../models/Computer";
 
 export class ComputersController {
   private client: ComputerClient;
@@ -16,6 +17,27 @@ export class ComputersController {
     const id = +req.params.id;
     const data = await this.client.getComputer(id);
     res.send(data.data);
+  }
+
+  public async postComputer(req: Request, res: Response) {
+    const computer: Computer = req.body;
+    try {
+      await this.client.postComputer(computer);
+      res.sendStatus(200);
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  }
+
+  public async updateComputer(req: Request, res: Response) {
+    const id = +req.params.id;
+    const computer: Computer = req.body;
+    try {
+      await this.client.putComputer(id, computer);
+      res.sendStatus(200);
+    } catch (error) {
+      res.sendStatus(500);
+    }
   }
 
   public async deleteComputer(req: Request, res: Response) {

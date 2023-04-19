@@ -12,19 +12,18 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/computers", computersRouter);
 app.use("/mobiles", mobileRouter);
-app.use("/televisons", televisonRouter);
-app.use("/audio-systems", audioRouter);
+app.use("/televisions", televisonRouter);
+app.use("/audios", audioRouter);
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
-
   next();
 });
 
 app.get("/", (req, res) => {
-  res.send();
+  res.send("hello");
 });
 
-app.listen(port, () => {
+app.listen(8008, () => {
   console.log(`Server is running on port ${port}.`);
 });

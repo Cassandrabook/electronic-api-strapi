@@ -15,7 +15,7 @@
     "name": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
     "manufacturer": {
