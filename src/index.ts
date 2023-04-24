@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/computers", computersRouter);
 app.use("/mobiles", mobileRouter);
 app.use("/televisions", televisonRouter);
-app.use("/audios", audioRouter);
+app.use("/audio", audioRouter);
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
@@ -21,9 +21,9 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("hello");
+  res.send("Welcome to my electronic api");
 });
 
-app.listen(8008, () => {
-  console.log(`Server is running on port ${port}.`);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
